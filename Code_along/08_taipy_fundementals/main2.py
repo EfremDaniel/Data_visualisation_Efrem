@@ -2,8 +2,22 @@ import taipy.gui.builder as tgb
 from taipy.gui import Gui
 import plotly.express as px
 
+
 slider_value = 20
 selected_fruit = "avocado"
+number1 = 5
+number2 = 10
+sum_ = number1 + number2
+product = number1 * number2
+quotient = number1 / number2
+difference = number1 - number2
+
+def perform_calculator():
+    state.sum_ = int(state.number1) + int(state.number2)
+    state.product = int(state.number1) * int(state.number2)
+    state.difference = int(state.number1) - int(state.number2)
+    state.quotient = int(state.number1) / int(state.number2)
+
 
 with tgb.Page() as page:
     tgb.text("# Hello there taipy", mode="md")
@@ -22,6 +36,18 @@ with tgb.Page() as page:
     
     tgb.text("Yummy **{selected_fruit}**", mode="md")
     tgb.image("assets/{selected_fruit}.jpg")
+
+
+    tgb.text("Coolu calculator", mode="md")
+    tgb.text("Type in number")
+    tgb.input("{number1}")
+
+    tgb.text("Type in another number")
+    tgb.input("{number2}")
+
+    tgb.text("You have typed {number1} and {number2}")
+    tgb.button(label="CALCULATOR", class_name="plain", on_action=perform_calculator)
+
    
 
 
